@@ -103,14 +103,14 @@ server <- function(input, output) {
         PerAcre = (Fixed + Variable) / Acres
       )
     
-    ggplot(plot_data, aes(x = Acres, y = PerAcre)) +
-      geom_line(color = "#2c3e50", size = 1.2) +
-      geom_point(aes(x = input$farm_size, y = calc_metrics()$per_acre), color = "red", size = 4) +
-      labs(title = "Economies of Scale in Drone Spraying",
-           y = "Cost Per Acre ($)",
-           x = "Total Farm Size (Acres)") +
-      theme_minimal() +
-      scale_y_continuous(labels = scales::dollar)
+    # ggplot(plot_data, aes(x = Acres, y = PerAcre)) +
+    #   geom_line(color = "#2c3e50", size = 1.2) +
+    #   geom_point(aes(x = input$farm_size, y = calc_metrics()$per_acre), color = "red", size = 4) +
+    #   labs(title = "Economies of Scale in Drone Spraying",
+    #        y = "Cost Per Acre ($)",
+    #        x = "Total Farm Size (Acres)") +
+    #   theme_minimal() +
+    #   scale_y_continuous(labels = scales::dollar)
   })
 }
 
