@@ -1,8 +1,15 @@
 library(shiny)
-#library(ggplot2)
+library(ggplot2)
 library(dplyr)
 library(bslib) # For a modern look
 
+# These lines ensure Shinylive "sees" and bundles the hidden dependencies
+# They don't need to run, they just need to be written in the file
+if (FALSE) {
+  library(munsell)
+  library(labeling)
+  library(colorspace)
+}
 
 # code run in the console to export the shiny results
 # shinylive::export(appdir = ".", destdir = "docs")
@@ -103,14 +110,14 @@ server <- function(input, output) {
         PerAcre = (Fixed + Variable) / Acres
       )
     
-    # ggplot(plot_data, aes(x = Acres, y = PerAcre)) +
-    #   geom_line(color = "#2c3e50", size = 1.2) +
-    #   geom_point(aes(x = input$farm_size, y = calc_metrics()$per_acre), color = "red", size = 4) +
-    #   labs(title = "Economies of Scale in Drone Spraying",
-    #        y = "Cost Per Acre ($)",
-    #        x = "Total Farm Size (Acres)") +
-    #   theme_minimal() +
-    #   scale_y_continuous(labels = scales::dollar)
+    ggplot(plot_data, aes(x = Acres, y = PerAcre)) +
+      geom_line(color = "#2c3e50", size = 1.2) +
+      geom_point(aes(x = input$farm_size, y = calc_metrics()$per_acre), color = "red", size = 4) +
+      labs(title = "Economies of Scale in Drone Spraying",
+           y = "Cost Per Acre ($)",
+           x = "Total Farm Size (Acres)") +
+      theme_minimal() +
+      scale_y_continuous(labels = scales::dollar)
   })
 }
 
