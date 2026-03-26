@@ -3,13 +3,18 @@ library(ggplot2)
 library(dplyr)
 library(bslib) # For a modern look
 
+# "Hidden Dependencies" block:
 # These lines ensure Shinylive "sees" and bundles the hidden dependencies
 # They don't need to run, they just need to be written in the file
 if (FALSE) {
   library(munsell)
   library(labeling)
   library(colorspace)
+  library(scales) # Crucial for ggplot2 axes
+  library(glue)   # Often used internally by ggplot2
 }
+
+
 
 # code run in the console to export the shiny results
 # shinylive::export(appdir = ".", destdir = "docs")
